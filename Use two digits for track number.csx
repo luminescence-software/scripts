@@ -2,7 +2,7 @@
 
 using Metatogger.Data;
 
-foreach	(var file in files)
+foreach (var file in files)
 {
 	string trackNumber = file.GetFirstValue(TagName.TrackNumber);
 	if (trackNumber != null && trackNumber.Length == 1)

@@ -10,7 +10,7 @@ string NewValue(string oldValue)
 	return sb.ToString();
 }
 
-foreach	(var file in files)
+foreach (var file in files)
 	foreach (var tag in file.GetAllTags())
 		foreach (string tagValue in tag.Value)
 			file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));

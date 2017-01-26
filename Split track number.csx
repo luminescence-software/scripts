@@ -5,10 +5,10 @@ using Metatogger.Data;
 string NewValue(string oldValue)
 {
 	int index = oldValue.IndexOf('/');
-	return index == -1 ? oldValue : oldValue.Substring(0, index);	
+	return index == -1 ? oldValue : oldValue.Substring(0, index);
 }
 
-foreach	(var file in files)
+foreach (var file in files)
 {
 	string trackNumber = file.GetFirstValue(TagName.TrackNumber);
 	if (trackNumber != null)
