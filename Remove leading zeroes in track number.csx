@@ -7,5 +7,5 @@ foreach (var file in files)
 {
 	int trackNumber;
 	if (Int32.TryParse(file.GetFirstValue(TagName.TrackNumber), out trackNumber))
-		file.SetTag(TagName.TrackNumber, $ "{trackNumber}");
+		file.SetTag(TagName.TrackNumber, trackNumber.ToString());
 }
