@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 //namespace Metatogger.Data
 //{
-   public interface IAudioFile
+public interface IAudioFile
    {
       string Bitrate { get; }
       string BitsPerSample { get; }
@@ -50,7 +52,7 @@ using System.Collections.ObjectModel;
       string SetTagValue(string name, string oldValue, string newValue);
       int SimilarityGroupId { get; }
    }
-   
+
    public enum FileProcess
    {
       Copy,
