@@ -1,4 +1,4 @@
-#r "C:\Program Files (x86)\Luminescence Software\Metatogger 5.8\Metatogger.exe"
+#r "C:\Program Files (x86)\Luminescence Software\Metatogger 5.9\Metatogger.exe"
 
 using System.Collections.Generic;
 using Metatogger.Data;
