@@ -5,7 +5,6 @@ using Metatogger.Data;
 
 foreach (var file in files)
 {
-	int trackNumber;
-	if (Int32.TryParse(file.GetFirstValue(TagName.TrackNumber), out trackNumber))
+	if (Int32.TryParse(file.GetFirstValue(TagName.TrackNumber), out int trackNumber))
 		file.SetTag(TagName.TrackNumber, trackNumber.ToString());
 }

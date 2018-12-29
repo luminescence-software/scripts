@@ -27,6 +27,6 @@ foreach	(var file in files)
 		foreach (string tagValue in tag.Value)
 		{
 			var na = NonASCII(tagValue);
-			if(na.Any() && !NonEASCII(na).Any())			
-				file.SetTagValue(tag.Key, tagValue, ConvertToUTF8(tagValue));			
+			if(na.Any() && !NonEASCII(na).Any())
+				file.SetTagValue(tag.Key, tagValue, ConvertToUTF8(tagValue));
 		}
