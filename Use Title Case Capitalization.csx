@@ -4,7 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
+using Metatogger.Data;
+
+ // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
+ // leave the array empty to process all tags => { }
+string[] tagsToProcess = {  };
 
 public static class EnglishTitleCapitalizer
 {
@@ -63,7 +67,7 @@ public static class EnglishTitleCapitalizer
 		if (SpecialMixedCase.ContainsKey(s))
 			return SpecialMixedCase[s];
 
-		var sb = new StringBuilder(s);
+		var sb = s.ToCharArray();
 		sb[firstCharIndex] = Char.ToUpper(sb[firstCharIndex]);
 
 		for (int i = 0; i < sb.Length - 1; i++)
@@ -72,7 +76,7 @@ public static class EnglishTitleCapitalizer
 				sb[i + 1] = Char.ToUpper(sb[i + 1]);
 		}
 
-		return sb.ToString();
+		return new string(sb);
 	}
 
 	public static string Capitalize(string title, bool resetUpperCase = false, bool useTitleCase = true, int maxPrepositionLength = 3)
@@ -133,6 +137,6 @@ public static class EnglishTitleCapitalizer
 }
 
 foreach (var file in files)
-	foreach (var tag in file.GetAllTags())
+	foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))
 		foreach (string tagValue in tag.Value)
 			file.SetTagValue(tag.Key, tagValue, EnglishTitleCapitalizer.Capitalize(tagValue));

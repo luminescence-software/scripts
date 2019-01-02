@@ -2,15 +2,13 @@
 
 using Metatogger.Data;
 
-string NewValue(string oldValue)
-{
-	int index = oldValue.IndexOf('/');
-	return index == -1 ? oldValue : oldValue.Substring(0, index);
-}
-
 foreach (var file in files)
 {
 	string trackNumber = file.GetFirstValue(TagName.TrackNumber);
 	if (trackNumber != null)
-		file.SetTag(TagName.TrackNumber, NewValue(trackNumber));
+	{
+		int index = trackNumber.IndexOf('/');
+		if (index != -1)
+			file.SetTag(TagName.TrackNumber, trackNumber.Substring(0, index));
+	}
 }

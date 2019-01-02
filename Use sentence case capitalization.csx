@@ -1,16 +1,24 @@
-// This script convert the first letter of tag value to uppercase ("the artist" -> "The artist")
+// This script convert the first letter of tags value to uppercase ("the artist" -> "The artist")
 
 using System;
-using System.Text;
+using System.Linq;
+using Metatogger.Data;
 
-string NewValue(string oldValue)
+ // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
+ // leave the array empty to process all tags => { }
+string[] tagsToProcess = {  };
+
+string UppercaseFirst(string tagValue)
 {
-	var sb = new StringBuilder(oldValue);
-	if (sb.Length > 0) sb[0] = Char.ToUpper(sb[0]);
-	return sb.ToString();
+	if (tagValue.Length == 0)
+		return tagValue;
+
+	char[] tagChar = tagValue.ToCharArray();
+	tagChar[0] = Char.ToUpper(tagChar[0]);
+	return new string(tagChar);
 }
 
 foreach (var file in files)
-	foreach (var tag in file.GetAllTags())
+	foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))
 		foreach (string tagValue in tag.Value)
-			file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
+			file.SetTagValue(tag.Key, tagValue, UppercaseFirst(tagValue));

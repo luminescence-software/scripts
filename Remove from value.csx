@@ -1,12 +1,17 @@
-// This script removes all tags that contains specified value
+// This script removes tags that contains specified value
 
-string NewValue(string oldValue)
-{
-	string tagValueToRemove = ""; // enter here the tag value that you want to remove
-	return oldValue != tagValueToRemove ? oldValue : null;
-}
+using System.Linq;
+using Metatogger.Data;
+
+// enter here the tag value that you want to remove
+string tagValueToRemove = "";
+
+ // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
+ // leave the array empty to process all tags => { }
+string[] tagsToProcess = {  };
 
 foreach (var file in files)
-	foreach (var tag in file.GetAllTags())
+	foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))
 		foreach (string tagValue in tag.Value)
-			file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
+			if (tagValue == tagValueToRemove)
+				file.SetTagValue(tag.Key, tagValue, null);
