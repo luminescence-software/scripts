@@ -1,10 +1,10 @@
 // Describe here what the script does
 
-//#load ".intellisense.csx" // you can temporarily uncomment this line under Visual Studio Code to get IntelliSense
-
-
 using System.Linq;
 using Metatogger.Data;
+
+// Uncomment the following line to get better coding experience with VS Code, but DO NOT forget to comment it before running the script into host
+//System.Collections.Generic.IEnumerable<Metatogger.Data.AudioFile> files = new System.Collections.Generic.List<Metatogger.Data.AudioFile>(); // list of checked audio files loaded in the workspace
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
  // leave the array empty to process all tags => { }
