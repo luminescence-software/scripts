@@ -1,3 +1,3 @@
-/r:"C:/Program Files (x86)/Luminescence Software/Metatogger 6.0/Metatogger.exe"
-/r:"C:/Program Files (x86)/Luminescence Software/Metatogger 5.9/Metatogger.exe"
-/r:"E:/Home/Important/Development/Projects/Metatogger/Sources/Metatogger/bin/Debug/Metatogger.exe"
+/r:"C:/Program Files (x86)/Metatogger 7.1/Metatogger.dll"
+/r:"C:/Program Files (x86)/Metatogger 7.0/Metatogger.dll"
+/r:"E:/Home/Important/Development/Projects/Metatogger/Sources/Metatogger/bin/Debug/net5.0-windows10.0.19041.0/win-x64/Metatogger.dll"
