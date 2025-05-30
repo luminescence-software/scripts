@@ -4,6 +4,8 @@ Scripts for Metatogger are written is C# and executed by Roslyn.
 
 The coding experience is much better under Visual Studio Code (code completion, refactoring,...).
 
+The API documentation for the main classes available for scripting in Metatogger can be read online at [luminescence-software.github.io/scripts-doc/](https://luminescence-software.github.io/scripts-doc/).
+
 Here is a basic script template:
 
 ```cs
@@ -18,13 +20,13 @@ string[] tagsToProcess = {  };
 
 string NewValue(string oldValue)
 {
-	return oldValue; // change here to return a custom tag value
+   return oldValue; // change here to return a custom tag value
 }
 
 foreach (var file in files)
-	foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))
-		foreach (string tagValue in tag.Value)
-			file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
+   foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))
+     foreach (string tagValue in tag.Value)
+        file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
 
 
 // The "files" variable contains the collection of audio files checked in Metatogger
