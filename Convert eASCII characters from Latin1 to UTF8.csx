@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Metatogger.Data;
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
- // leave the array empty to process all tags => { }
+ // leave the array empty to process all tags => []
 string[] tagsToProcess = [];
 
 IEnumerable<char> NonASCII(IEnumerable<char> chars) => chars.Where(c => c > 127);
@@ -16,9 +16,9 @@ IEnumerable<char> NonEASCII(IEnumerable<char> chars) => chars.Where(c => c > 255
 
 string ConvertToUTF8(string oldValue)
 {
-	Encoding srcEncoding = Encoding.Default; 
+	Encoding srcEncoding = Encoding.Default;
 	// if your tags have not been encoded with your system's default codepage,
-	// you have to set the codepage that has been used, 
+	// you have to set the codepage that has been used,
 	// e.g. for Cyrillic character encoding:
 	// srcEncoding = Encoding.GetEncoding(1251);
 

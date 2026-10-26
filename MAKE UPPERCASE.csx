@@ -4,7 +4,7 @@ using System.Linq;
 using Metatogger.Data;
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
- // leave the array empty to process all tags => { }
+ // leave the array empty to process all tags => []
 string[] tagsToProcess = [];
 
 foreach (var file in files)

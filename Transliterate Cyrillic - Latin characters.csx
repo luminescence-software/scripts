@@ -1,4 +1,4 @@
-// This script allows to transliterate cyrillic characters to latin and vice versa
+﻿// This script allows to transliterate cyrillic characters to latin and vice versa
 
 #load ".CyrillicTransliteration.csx"
 
@@ -6,7 +6,7 @@ using System.Linq;
 using Metatogger.Data;
 
 // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
-// leave the array empty to process all tags => { }
+// leave the array empty to process all tags => []
 
 string[] tagsToProcess = [];
 
