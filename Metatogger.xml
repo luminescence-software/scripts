@@ -1,0 +1,2961 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Metatogger</name>
+    </assembly>
+    <members>
+        <member name="T:Metatogger.App">
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Metatogger.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Metatogger.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Metatogger.Backstage.BackstageView">
+            <summary>
+            BackstageView
+            </summary>
+        </member>
+        <member name="M:Metatogger.Backstage.BackstageView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Metatogger.Business.NChromaprint.NativeMethods.ChromaprintGetVersion">
+            <summary>
+            Return the version number of Chromaprint.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Metatogger.Business.NChromaprint.NativeMethods.ChromaprintEncodeFingerprint(System.IntPtr,System.Int32,System.Int32,System.IntPtr@,System.Int32@,System.Int32)">
+            <summary>
+            Compress and optionally base64-encode a raw fingerprint
+            </summary>
+            <param name="fp">pointer to an array of 32-bit integers representing the raw fingerprint to be encoded</param>
+            <param name="size">number of items in the raw fingerprint</param>
+            <param name="algorithm">Chromaprint algorithm version which was used to generate the raw fingerprint</param>
+            <param name="encoded_fp">[out] pointer to a pointer, where the encoded fingerprint will be stored</param>
+            <param name="encoded_size">[out] size of the encoded fingerprint in bytes</param>
+            <param name="base64">Whether to return binary data or base64-encoded ASCII data.</param>
+            <returns>0 on error, 1 on success</returns>
+            <remarks>
+            The caller is responsible for freeing the returned pointer using chromaprint_dealloc().
+            </remarks>
+        </member>
+        <member name="M:Metatogger.Business.NChromaprint.NativeMethods.ChromaprintDecodeFingerprint(System.IntPtr,System.Int32,System.IntPtr@,System.Int32@,System.Int32@,System.Int32)">
+            <summary>
+            Uncompress and optionally base64-decode an encoded fingerprint
+            </summary>
+            <param name="encoded_fp">pointer to an encoded fingerprint</param>
+            <param name="encoded_size">size of the encoded fingerprint in bytes</param>
+            <param name="fp">[out] pointer to a pointer, where the decoded raw fingerprint (array of 32-bit integers) will be stored</param>
+            <param name="size">[out] Number of items in the returned raw fingerprint</param>
+            <param name="algorithm">[out] Chromaprint algorithm version which was used to generate the raw fingerprint</param>
+            <param name="base64">Whether the encoded_fp parameter contains binary data or base64-encoded ASCII data.</param>
+            <returns>0 on error, 1 on success</returns>
+            <remarks>
+            The caller is responsible for freeing the returned pointer using chromaprint_dealloc().
+            </remarks>
+        </member>
+        <member name="M:Metatogger.Business.NChromaprint.NativeMethods.ChromaprintDealloc(System.IntPtr)">
+            <summary>
+            Free memory allocated by any function from the Chromaprint API.
+            </summary>
+            <param name="ptr">pointer to be deallocated</param>
+        </member>
+        <member name="M:Metatogger.Business.TagProcessor.GetTemplateRegex">
+            <remarks>
+            Pattern:<br/>
+            <code>(\\|.*?\\|)</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ 1st capture group.<br/>
+                ○ Match '|'.<br/>
+                ○ Match a character other than '\n' lazily any number of times.<br/>
+                ○ Match '|'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.Single">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.AdvancedSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.FileProcess">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.Id3Version">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonAdvancedSettingsContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:Metatogger.Data.JsonAdvancedSettingsContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonAdvancedSettingsContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonAdvancedSettingsContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Metatogger.Data.AudioFile">
+            <summary>
+            Represents an audio file and provides methods and properties to manage its metadata, tags, and file operations.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.IsEnabledProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether the audio file is enabled for modification in the Metatogger workspace.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.PathErrorProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.PathError">
+            <summary>
+            Gets the error message if the output path is invalid, or null if there is no error.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasPathErrorProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasPathError">
+            <summary>
+            Gets a value indicating whether there is an error with the output path.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasChangesProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasChanges">
+            <summary>
+            Gets a value indicating whether the audio file has any changes (tags or path).
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasExternalCoverErrorProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasExternalCoverError">
+            <summary>
+            Gets a value indicating whether there is an error with the external cover art.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.ExternalCoverProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.ExternalCover">
+            <summary>
+            Gets or sets the path to the external cover art file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.ExternalCoverDescriptionProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.ExternalCoverDescription">
+            <summary>
+            Gets the description of the external cover art.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.OutputPathProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.OutputPath">
+            <summary>
+            Gets or sets the output path for the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasOutputPathChangedProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasOutputPathChanged">
+            <summary>
+            Gets a value indicating whether the output path has changed.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.InputPathProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.InputPath">
+            <summary>
+            Gets the input path of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.InputFilenameProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.InputFilename">
+            <summary>
+            Gets the input filename of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.OutputFilenameProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.OutputFilename">
+            <summary>
+            Gets or sets the output filename for the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasOutputFilenameChangedProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasOutputFilenameChanged">
+            <summary>
+            Gets a value indicating whether the output filename has changed.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.CoverProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Cover">
+            <summary>
+            Gets or sets the temporary path to the embedded cover art file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.CoverDescriptionProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.CoverDescription">
+            <summary>
+            Gets the description of the embedded cover art.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasCoverChangedProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasCoverChanged">
+            <summary>
+            Gets a value indicating whether the embedded cover art has changed.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.AudioFile.HasCoverErrorProperty">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasCoverError">
+            <summary>
+            Gets a value indicating whether there is an error with the embedded cover art.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Codec">
+            <summary>
+            Gets the codec name of the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.CodecVersion">
+            <summary>
+            Gets the codec version of the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Seconds">
+            <summary>
+            Gets the duration of the audio file in seconds.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Channels">
+            <summary>
+            Gets the number of audio channels.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.NominalBitrate">
+            <summary>
+            Gets the nominal bitrate of the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.BitsSample">
+            <summary>
+            Gets the number of bits per sample.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasCoverSupport">
+            <summary>
+            Gets a value indicating whether the audio file supports embedded cover art.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.FileProcess">
+            <summary>
+            Gets or sets the file process operation to be performed on the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasTagChanges">
+            <summary>
+            Gets a value indicating whether any tag has changed.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.HasPathChanges">
+            <summary>
+            Gets a value indicating whether the path (output path or filename) has changed.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.FullPath">
+            <summary>
+            Gets the full path of the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.SimilarityGroupId">
+            <summary>
+            Gets the similarity group ID for the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Duration">
+            <summary>
+            Gets the formatted duration string of the audio file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.ChannelMode">
+            <summary>
+            Gets the channel mode as a string (e.g., "Mono", "Stereo").
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.SampleRate">
+            <summary>
+            Gets the sample rate as a formatted string, in Hertz.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Bitrate">
+            <summary>
+            Gets the bitrate as a formatted string, in kbps.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.BitsPerSample">
+            <summary>
+            Gets the bits per sample as a formatted string, in bits.
+            </summary>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.HasChange(System.String)">
+            <summary>
+            Determines whether the specified tag has changed.
+            </summary>
+            <param name="tag">The tag name.</param>
+            <returns>True if the tag has changed; otherwise, false.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.GetPreviousTagValue(System.String)">
+            <summary>
+            Gets the previous value of the specified tag before changes.
+            </summary>
+            <param name="tag">The tag name.</param>
+            <returns>The previous value of the tag, or null if the tag has not changed.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.RejectChange(System.String)">
+            <summary>
+            Rejects the change for the specified tag, reverting it to its previous value.
+            </summary>
+            <param name="tag">The tag name.</param>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.RejectChanges">
+            <summary>
+            Rejects all changes made to the audio file, reverting to the original state.
+            </summary>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.SaveChangesAsync">
+            <summary>
+            Asynchronously saves all changes made to the audio file.
+            </summary>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.SetTagValue(System.String,System.String,System.String)">
+            <summary>
+            Sets the value of a tag, replacing an old value with a new value.
+            </summary>
+            <param name="name">The tag name.</param>
+            <param name="oldValue">The old value to replace.</param>
+            <param name="newValue">The new value to set.</param>
+            <returns>The normalized tag name, or null if not changed.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.SetTag(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Sets the value of a tag, with options to overwrite or add if it exists.
+            </summary>
+            <param name="tag">The tag name.</param>
+            <param name="value">The value to set.</param>
+            <param name="overwrite">Whether to overwrite the existing value.</param>
+            <param name="addIfExists">Whether to add the value if it already exists.</param>
+            <returns>The normalized tag name, or null if not changed.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.GetAllTags">
+            <summary>
+            Gets all tags and their values as a dictionary.
+            </summary>
+            <returns>A dictionary of tag names and their list of values.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.GetAllFirstTagsWithExtendedMetadata">
+            <summary>
+            Gets all first tag values with extended metadata (technical informations and file properties) as a dictionary.
+            </summary>
+            <returns>A dictionary of tag names and their first value or extended metadata.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.GetFirstValue(System.String)">
+            <summary>
+            Gets the first value of the specified tag.
+            </summary>
+            <param name="tag">The tag name.</param>
+            <returns>The first value of the tag, or null if not available.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.GetValues(System.String)">
+            <summary>
+            Gets the values of the specified tag as a list.
+            </summary>
+            <param name="tag">The tag name.</param>
+            <returns>A list of values for the tag, or null if not available.</returns>
+        </member>
+        <member name="M:Metatogger.Data.AudioFile.ToString">
+            <summary>
+            Returns the full path of the audio file.
+            </summary>
+            <returns>The full path as a string.</returns>
+        </member>
+        <member name="P:Metatogger.Data.AudioFile.Item(System.String)">
+            <exclude />
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.NullableBoolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.Double">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.ColumnSortOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.FixedStyle">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.ApplicationState">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.AudioFileState">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.ColumnSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.ColumnSettingsArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.Output">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.WorkspaceSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.FileProcess">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.UserSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.DictionaryStringString">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.ListAudioFileState">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonApplicationStateContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:Metatogger.Data.JsonApplicationStateContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonApplicationStateContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonApplicationStateContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.Error">
+            <summary>
+            Generic error
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.Abort">
+            <summary>
+            Callback routine requested an abort
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.Busy">
+            <summary>
+            The database file is locked
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.ReadOnly">
+            <summary>
+            Attempt to write a readonly database
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.IO">
+            <summary>
+            Some kind of disk I/O error occurred
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.Corrupt">
+            <summary>
+            The database disk image is malformed
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.Full">
+            <summary>
+            Insertion failed because database is full
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.CannotOpen">
+            <summary>
+            Unable to open the database file
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.SqliteErrorCode.NotDatabase">
+            <summary>
+            File opened that is not a database file
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Boolean">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Double">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.ColumnSortOrder">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.FixedStyle">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.CoverArtStorage">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.ColumnSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.ColumnSettingsArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.SystemSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.WorkspaceSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.WorkspaceSettingsArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.FileProcess">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Side">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.UserSettings">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Point">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Rect">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Size">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Int32">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Int64">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.String">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.StringArray">
+            <summary>
+            Defines the source generated JSON serialization contract metadata for a given type.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.Default">
+            <summary>
+            The default <see cref="T:System.Text.Json.Serialization.JsonSerializerContext"/> associated with a default <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Data.JsonSystemSettingsContext.GeneratedSerializerOptions">
+            <summary>
+            The source-generated options associated with this context.
+            </summary>
+        </member>
+        <member name="M:Metatogger.Data.JsonSystemSettingsContext.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonSystemSettingsContext.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Metatogger.Data.JsonSystemSettingsContext.GetTypeInfo(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Metatogger.Data.ExtendedMetadataName">
+            <summary>
+            Provides constant names for extended metadata fields used in audio files,
+            such as technical informations and file properties.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.CodecVersion">
+            <summary>
+            The codec version of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.CodecName">
+            <summary>
+            The codec name of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.SampleRate">
+            <summary>
+            The sample rate of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.Duration">
+            <summary>
+            The duration of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.Bitrate">
+            <summary>
+            The bitrate of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.BitsPerSample">
+            <summary>
+            The number of bits per sample in the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.ChannelMode">
+            <summary>
+            The channel mode (e.g., Mono, Stereo) of the audio file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.ChannelsNumber">
+            <summary>
+            The number of audio channels in the file.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.Seconds">
+            <summary>
+            The duration of the audio file in seconds.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.TwoDigitsTrackNumber">
+            <summary>
+            The track number formatted as two digits (e.g., 01, 02).
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.ExtendedMetadataName.Filename">
+            <summary>
+            The filename of the audio file, without extension.
+            </summary>
+        </member>
+        <member name="T:Metatogger.Data.TagName">
+            <summary>
+            Provides constants for standard and extended tag names used in audio metadata.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Artist">
+            <summary>
+            The name of the main artist of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Title">
+            <summary>
+            The title of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Date">
+            <summary>
+            The date the piece is released, usually the year.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Album">
+            <summary>
+            The title of the album from which the piece is taken.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Genre">
+            <summary>
+            The music genre of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.TrackNumber">
+            <summary>
+            The track number of the piece on the album.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.AlbumArtist">
+            <summary>
+            The name of the main artist when there is more than one artist on the album, as on a compilation.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.DiscNumber">
+            <summary>
+            The part of a set the piece comes from.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Lyricist">
+            <summary>
+            The writer of the lyrics of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Composer">
+            <summary>
+            The name of the composer of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Language">
+            <summary>
+            The languages used in the lyrics of the piece.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.OriginalAlbum">
+            <summary>
+            The title of the original album when the piece has been re-released on an another album.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.OriginalArtist">
+            <summary>
+            The name of the original artist of the piece when this one is a cover by an another artist.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.OriginalDate">
+            <summary>
+            The date of first release of the piece when this one has been re-released, usually the year.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.AlbumSort">
+            <summary>
+            Alternative "Album" tag used for sorting purposes.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.ArtistSort">
+            <summary>
+            Alternative "Artist" tag used for sorting purposes.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.AlbumArtistSort">
+            <summary>
+            Alternative "Album Artist" tag used for sorting purposes.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.TitleSort">
+            <summary>
+            Alternative "Title" tag used for sorting purposes.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Label">
+            <summary>
+            The name of the label or publisher.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Comment">
+            <summary>
+            Any kind of information that does not fit in any other standard tags.
+            </summary>
+        </member>
+        <member name="F:Metatogger.Data.TagName.Lyrics">
+            <summary>
+            The lyrics of the song.
+            </summary>
+        </member>
+        <member name="T:Metatogger.FileProcess">
+            <summary>
+            Specifies the type of file operation to perform on an audio file,
+            such as copying, moving, renaming, or creating a symbolic link.
+            </summary>
+        </member>
+        <member name="F:Metatogger.FileProcess.Default">
+            <exclude />
+        </member>
+        <member name="F:Metatogger.FileProcess.Rename">
+            <exclude />
+        </member>
+        <member name="F:Metatogger.FileProcess.Copy">
+            <summary>
+            Copy the file to a new location.
+            </summary>
+        </member>
+        <member name="F:Metatogger.FileProcess.Move">
+            <summary>
+            Move the file to a new location.
+            </summary>
+        </member>
+        <member name="F:Metatogger.FileProcess.MoveDeleteEmptyFolder">
+            <summary>
+            Move the file and delete the source folder if it becomes empty.
+            </summary>
+        </member>
+        <member name="F:Metatogger.FileProcess.SoftLink">
+            <summary>
+            Create a symbolic link to the file.
+            </summary>
+        </member>
+        <member name="T:Metatogger.Properties.ResourceStrings">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddACover">
+            <summary>
+              Recherche une chaîne localisée semblable à Add a cover....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddColumn">
+            <summary>
+              Recherche une chaîne localisée semblable à Add a user tag....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddCoverCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Get covers from the MusicBrainz encyclopedia.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddCoverTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Covers.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddFolders">
+            <summary>
+              Recherche une chaîne localisée semblable à Add folders.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Add files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddItemsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Add audio files into Metatogger to tag them..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AddScript">
+            <summary>
+              Recherche une chaîne localisée semblable à Add a new script.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Administrator">
+            <summary>
+              Recherche une chaîne localisée semblable à Administrator.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Album">
+            <summary>
+              Recherche une chaîne localisée semblable à Album.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumArtist">
+            <summary>
+              Recherche une chaîne localisée semblable à Album artist.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumArtistSort">
+            <summary>
+              Recherche une chaîne localisée semblable à Album artist (sort).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumArtistSortToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Alternative &quot;Album artist&quot; tag used for sorting purposes..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumArtistToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The name of the main artist when there is more than one artist on the album, as on a compilation..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumSort">
+            <summary>
+              Recherche une chaîne localisée semblable à Album (sort).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumSortToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Alternative &quot;Album&quot; tag used for sorting purposes..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AlbumToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The title of the album from which the piece is taken..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AllM">
+            <summary>
+              Recherche une chaîne localisée semblable à All.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AllPictures">
+            <summary>
+              Recherche une chaîne localisée semblable à All embedded pictures.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AllSupportedTypes">
+            <summary>
+              Recherche une chaîne localisée semblable à All supported types.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ApplicationStateFilter">
+            <summary>
+              Recherche une chaîne localisée semblable à Metatogger session.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Artist">
+            <summary>
+              Recherche une chaîne localisée semblable à Artist.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ArtistSort">
+            <summary>
+              Recherche une chaîne localisée semblable à Artist (sort).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ArtistSortToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Alternative &quot;Artist&quot; tag used for sorting purposes..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ArtistToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The name of the main artist of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Author">
+            <summary>
+              Recherche une chaîne localisée semblable à Author:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Automatic">
+            <summary>
+              Recherche une chaîne localisée semblable à Automatic.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.AutomaticTagging">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.BackDefaultSettingsInformation">
+            <summary>
+              Recherche une chaîne localisée semblable à You will lose all your patterns, options, etc. All default scripts will be reseted..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Bitrate">
+            <summary>
+              Recherche une chaîne localisée semblable à Bitrate.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.BitsPerSample">
+            <summary>
+              Recherche une chaîne localisée semblable à Bits per sample.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.BrowseRepository">
+            <summary>
+              Recherche une chaîne localisée semblable à Browse the GitHub scripts repository....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Cancel">
+            <summary>
+              Recherche une chaîne localisée semblable à Cancel.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelAllItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert all items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert checked.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert all.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelItemsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert all changes made to audio files..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelSelectedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert selected.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CancelSelectedTag">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert current tag for selected items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Changed">
+            <summary>
+              Recherche une chaîne localisée semblable à Yes.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Changes">
+            <summary>
+              Recherche une chaîne localisée semblable à Changes.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ChangesWillBeLost">
+            <summary>
+              Recherche une chaîne localisée semblable à Unsaved changes will be permanently lost!.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ChannelMode">
+            <summary>
+              Recherche une chaîne localisée semblable à Channel mode.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Check">
+            <summary>
+              Recherche une chaîne localisée semblable à Check.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckAndUncheckOther">
+            <summary>
+              Recherche une chaîne localisée semblable à Check and uncheck other.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckAndUncheckOtherToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Check selected items and uncheck the other ones..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Checked">
+            <summary>
+              Recherche une chaîne localisée semblable à Checked.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Checked items in the workspace:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckGroup">
+            <summary>
+              Recherche une chaîne localisée semblable à Check.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckNewVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à Check new version.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CheckToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Check selected items..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CleanCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Clean checked items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CleanUnusedColumns">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove unused user tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ClearAllItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove all items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ClearCover">
+            <summary>
+              Recherche une chaîne localisée semblable à Clear cover.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ClearItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove all.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ClearItemsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove items loaded into Metatogger..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CodecVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à Codec.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CollapseGroupsWithOnlyOneItem">
+            <summary>
+              Recherche une chaîne localisée semblable à Collapse groups with one item.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ColumnName">
+            <summary>
+              Recherche une chaîne localisée semblable à User tag name:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ColumnPositions">
+            <summary>
+              Recherche une chaîne localisée semblable à Columns position.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ColumnVisibilities">
+            <summary>
+              Recherche une chaîne localisée semblable à Columns visibility.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ColumnWidths">
+            <summary>
+              Recherche une chaîne localisée semblable à Columns width.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Comment">
+            <summary>
+              Recherche une chaîne localisée semblable à Comment.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CommentToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Any kind of information that does not fit in any other standard tags..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CommonTags">
+            <summary>
+              Recherche une chaîne localisée semblable à Common tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ComponentsUsed">
+            <summary>
+              Recherche une chaîne localisée semblable à Components used:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Composer">
+            <summary>
+              Recherche une chaîne localisée semblable à Composer.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ComposerToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The name of the composer of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ComputingFingerprint">
+            <summary>
+              Recherche une chaîne localisée semblable à Computing acoustic fingerprints....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCoverAsEmbedded">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy external cover as embedded.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCoverAsExternal">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy embedded cover as external.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCovers">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy covers.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCoversAsEmbedded">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy all external covers as embedded.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCoversAsExternal">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy all embedded covers as external.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyCoversToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy all embedded covers to external covers and vice versa..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CopyFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Copy files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Cover">
+            <summary>
+              Recherche une chaîne localisée semblable à Embedded cover.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CoverArt">
+            <summary>
+              Recherche une chaîne localisée semblable à Cover arts.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CoverDownloadError">
+            <summary>
+              Recherche une chaîne localisée semblable à This cover cannot be downloaded: {0}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CoverDownloading">
+            <summary>
+              Recherche une chaîne localisée semblable à This cover is going to be downloaded. Please wait....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CoverSideToConstrain">
+            <summary>
+              Recherche une chaîne localisée semblable à Cover side to constrain.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.CreateSymbolicLinks">
+            <summary>
+              Recherche une chaîne localisée semblable à Create symbolic links.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Credits">
+            <summary>
+              Recherche une chaîne localisée semblable à Credits....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DatabaseMaintenance">
+            <summary>
+              Recherche une chaîne localisée semblable à Database.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DatabaseNotAvailable">
+            <summary>
+              Recherche une chaîne localisée semblable à The local database is missing or not ready. Please check its status in the File menu..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DatabaseUpToDate">
+            <summary>
+              Recherche une chaîne localisée semblable à Your database is up to date..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DataStatistics">
+            <summary>
+              Recherche une chaîne localisée semblable à Data statistics:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DataUsed">
+            <summary>
+              Recherche une chaîne localisée semblable à Data used:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Date">
+            <summary>
+              Recherche une chaîne localisée semblable à Date.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DateToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The date the piece is released, usually the year..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DecompressingDatabase">
+            <summary>
+              Recherche une chaîne localisée semblable à Decompressing database....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DefaultWorkspace">
+            <summary>
+              Recherche une chaîne localisée semblable à Default workspace.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Delete">
+            <summary>
+              Recherche une chaîne localisée semblable à Delete.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteAllSelected">
+            <summary>
+              Recherche une chaîne localisée semblable à Delete selected items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Delete checked.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteExternalCover">
+            <summary>
+              Recherche une chaîne localisée semblable à Delete the file &quot;{0}&quot;.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteNo">
+            <summary>
+              Recherche une chaîne localisée semblable à Don&apos;t delete.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteScriptConfirmation">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to delete the &quot;{0}&quot; script?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteScriptInformation">
+            <summary>
+              Recherche une chaîne localisée semblable à The script will be sent to the recycle bin..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DeleteSelected">
+            <summary>
+              Recherche une chaîne localisée semblable à Delete selected.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Discard">
+            <summary>
+              Recherche une chaîne localisée semblable à Discard.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscardAllChanges">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to discard all changes?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscardCheckedChanges">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to discard changes for activated items?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscardSelectedChanges">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to discard changes for selected items?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscardTagSelectedChanges">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to discard changes for tag &quot;{0}&quot; of selected items?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscNumber">
+            <summary>
+              Recherche une chaîne localisée semblable à Disc number.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DiscNumberToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The part of a set the piece comes from..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Download">
+            <summary>
+              Recherche une chaîne localisée semblable à Download.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DownloadingDatabase">
+            <summary>
+              Recherche une chaîne localisée semblable à Downloading database: {0:N}%..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DownloadMetatoggerInstruction">
+            <summary>
+              Recherche une chaîne localisée semblable à The new version will be downloaded from the official Metatogger website..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DownloadNewVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à Download it.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DownloadNo">
+            <summary>
+              Recherche une chaîne localisée semblable à Don&apos;t download.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.DuplicateFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Duplicate files ({0}).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Duration">
+            <summary>
+              Recherche une chaîne localisée semblable à Duration.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.EditAdvancedSettings">
+            <summary>
+              Recherche une chaîne localisée semblable à Edit advanced settings....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.EditOnMusicBrainz">
+            <summary>
+              Recherche une chaîne localisée semblable à View or edit this release on the MusicBrainz website.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.EmptyValue">
+            <summary>
+              Recherche une chaîne localisée semblable à A pattern must be set..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.EncodingFormatNotSupported">
+            <summary>
+              Recherche une chaîne localisée semblable à Encoding the image to {0} format is not supported..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.EnterScriptName">
+            <summary>
+              Recherche une chaîne localisée semblable à Enter a name for the script:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorBrowseFolder">
+            <summary>
+              Recherche une chaîne localisée semblable à The folder &quot;{0}&quot; cannot be browsed: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorComputingFingerprint">
+            <summary>
+              Recherche une chaîne localisée semblable à The fingerprint cannot be computed for &quot;{0}&quot;: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorImportation">
+            <summary>
+              Recherche une chaîne localisée semblable à The file &quot;{0}&quot; cannot be imported: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorLoadPlaylist">
+            <summary>
+              Recherche une chaîne localisée semblable à The playlist &quot;{0}&quot; cannot be loaded: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorLoadSession">
+            <summary>
+              Recherche une chaîne localisée semblable à The Metatogger session &quot;{0}&quot; cannot be loaded: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorSave">
+            <summary>
+              Recherche une chaîne localisée semblable à The file &quot;{0}&quot; cannot be saved: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorSaveCover">
+            <summary>
+              Recherche une chaîne localisée semblable à It was not possible to save the cover &quot;{0}&quot; to &quot;{1}&quot; because it is corrupt, or a component necessary for the operation is missing or has malfunctioned..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorTaggingFromFingerprint">
+            <summary>
+              Recherche une chaîne localisée semblable à The file &quot;{0}&quot; cannot be identified: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ErrorUsingFingerprint">
+            <summary>
+              Recherche une chaîne localisée semblable à The search for duplicates of the file &quot;{0}&quot; failed: {1}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Export">
+            <summary>
+              Recherche une chaîne localisée semblable à Export data.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ExportToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Export data to CSV or Excel file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ExternalCover">
+            <summary>
+              Recherche une chaîne localisée semblable à External cover.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ExternalCoverArtFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à External cover art filename:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.FakeIdentifier">
+            <summary>
+              Recherche une chaîne localisée semblable à A set of characters to ignore.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.File">
+            <summary>
+              Recherche une chaîne localisée semblable à File.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Filename">
+            <summary>
+              Recherche une chaîne localisée semblable à Filename:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Files">
+            <summary>
+              Recherche une chaîne localisée semblable à Files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.FingerprintIdentification">
+            <summary>
+              Recherche une chaîne localisée semblable à Fingerprint identification....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.FixedColumnCounts">
+            <summary>
+              Recherche une chaîne localisée semblable à Fixed column count.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.FolderDialogDescription">
+            <summary>
+              Recherche une chaîne localisée semblable à Select the folder wich contains your audio files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Genre">
+            <summary>
+              Recherche une chaîne localisée semblable à Genre.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.GenreToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The music genre of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.GroupByArtistAlbum">
+            <summary>
+              Recherche une chaîne localisée semblable à Group by: Artist, Album.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.GroupByArtistTitle">
+            <summary>
+              Recherche une chaîne localisée semblable à Group by: Artist, Title.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.GroupByInputFolder">
+            <summary>
+              Recherche une chaîne localisée semblable à Group by: File Location.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Grouping">
+            <summary>
+              Recherche une chaîne localisée semblable à Grouping.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Height">
+            <summary>
+              Recherche une chaîne localisée semblable à Height.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.HideEmptyFields">
+            <summary>
+              Recherche une chaîne localisée semblable à Hide empty fields.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Home">
+            <summary>
+              Recherche une chaîne localisée semblable à Home.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.IgnoredFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Ignored files while searching for duplicates.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Image">
+            <summary>
+              Recherche une chaîne localisée semblable à Image.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ImportTagToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Import the relevant tag from the selected file in the workspace.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Include">
+            <summary>
+              Recherche une chaîne localisée semblable à Include.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.IncludeNo">
+            <summary>
+              Recherche une chaîne localisée semblable à Don&apos;t include.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.IncludeSubfolders">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to include all subfolders of the selected folder?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InputFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à Filename.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InputPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Path.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidCharInFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à The filename contains the following invalid characters: &quot; {0} &quot;.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidCharInPath">
+            <summary>
+              Recherche une chaîne localisée semblable à The path contains the following invalid characters: &quot; {0} &quot;.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidCharInTag">
+            <summary>
+              Recherche une chaîne localisée semblable à The tags &quot;{0}&quot; contained in file &quot;{1}&quot; will be removed if that file is saved in Metatogger because they contain the following unsupported characters: &quot; {2} &quot;..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidCharInVorbisKey">
+            <summary>
+              Recherche une chaîne localisée semblable à A tag name contains the following invalid characters: &quot; {0} &quot;.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidExternalCoversFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à The filename is invalid or the image format is not supported..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidSyntaxPath">
+            <summary>
+              Recherche une chaîne localisée semblable à The path is invalid..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvalidTagInFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à The tags &quot;{0}&quot; have not been saved in file &quot;{1}&quot; because they are unsupported in {2} format..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Invert">
+            <summary>
+              Recherche une chaîne localisée semblable à Invert.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.InvertCheckToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Invert the check of selected items..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Items">
+            <summary>
+              Recherche une chaîne localisée semblable à Items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.KB">
+            <summary>
+              Recherche une chaîne localisée semblable à KB.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Label">
+            <summary>
+              Recherche une chaîne localisée semblable à Label.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.LabelToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The name of the label or publisher..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Language">
+            <summary>
+              Recherche une chaîne localisée semblable à Languages.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Languages">
+            <summary>
+              Recherche une chaîne localisée semblable à Languages:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.LanguageToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The languages used in the lyrics of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Loading">
+            <summary>
+              Recherche une chaîne localisée semblable à Loading....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Lyricist">
+            <summary>
+              Recherche une chaîne localisée semblable à Lyricist.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.LyricistToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The writer of the lyrics of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Lyrics">
+            <summary>
+              Recherche une chaîne localisée semblable à Lyrics.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.LyricsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The lyrics of the song..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MainPanelCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Audio files opened in Metatogger.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ManageColumns">
+            <summary>
+              Recherche une chaîne localisée semblable à Manage columns.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ManageColumnsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Show the column chooser to show, hide or reorder columns by drag &amp; drop..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ManagedMemory">
+            <summary>
+              Recherche une chaîne localisée semblable à Managed memory:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ManualTaggingCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Add or modify tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ManualTaggingTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Edit.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MatchDuration">
+            <summary>
+              Recherche une chaîne localisée semblable à Consider duration to match files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MatchOrder">
+            <summary>
+              Recherche une chaîne localisée semblable à Consider order to match files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MatchTitle">
+            <summary>
+              Recherche une chaîne localisée semblable à Consider track title to match files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MaxAllowedSize">
+            <summary>
+              Recherche une chaîne localisée semblable à Maximum allowed size.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MB">
+            <summary>
+              Recherche une chaîne localisée semblable à MB.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MetatoggerVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à Version {0} - {1} bits.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MoveFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Move files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.MoveFilesDeleteEmptyFolder">
+            <summary>
+              Recherche une chaîne localisée semblable à Move files (delete empty folders after moving).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NA">
+            <summary>
+              Recherche une chaîne localisée semblable à n/a.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NewVersionAvailable">
+            <summary>
+              Recherche une chaîne localisée semblable à A new version of Metatogger is available. Do you want to download it?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NoneM">
+            <summary>
+              Recherche une chaîne localisée semblable à None.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NoNewVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à You have the last version of Metatogger..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NoResult">
+            <summary>
+              Recherche une chaîne localisée semblable à No result found..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NormalizeTagsCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Edit tags with C# scripts.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NormalizeTagsTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Scripts.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.NotSupportedPictureInTags">
+            <summary>
+              Recherche une chaîne localisée semblable à The file &quot;{0}&quot; contains embedded cover arts whose image format is not recognized. These cover arts will be removed from the file if it is saved in Metatogger..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OK">
+            <summary>
+              Recherche une chaîne localisée semblable à OK.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OnlineHelp">
+            <summary>
+              Recherche une chaîne localisée semblable à Online help.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OnlineHelpToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Read the Metatogger documentation..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenAudioFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Open audio files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenContainingFolder">
+            <summary>
+              Recherche une chaîne localisée semblable à Open containing folder....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenCover">
+            <summary>
+              Recherche une chaîne localisée semblable à Open cover.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenCovers">
+            <summary>
+              Recherche une chaîne localisée semblable à Open covers....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenLocalScriptsRepository">
+            <summary>
+              Recherche une chaîne localisée semblable à Open local scripts repository in Visual Studio Code....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenState">
+            <summary>
+              Recherche une chaîne localisée semblable à Load.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OpenStateToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Load a working session (JMS) or a playlist (M3U) (Ctrl+Shift+L).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OptimizeNow">
+            <summary>
+              Recherche une chaîne localisée semblable à Optimize now.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OptimizeRequired">
+            <summary>
+              Recherche une chaîne localisée semblable à The database must be optimized to improve query performance..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OptimizingDatabase">
+            <summary>
+              Recherche une chaîne localisée semblable à Optimizing database....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OrganizeFilesFromTags">
+            <summary>
+              Recherche une chaîne localisée semblable à Organize files from tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalAlbum">
+            <summary>
+              Recherche une chaîne localisée semblable à Original album.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalAlbumToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The title of the original album when the piece has been re-released on an another album..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalArtist">
+            <summary>
+              Recherche une chaîne localisée semblable à Original artist.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalArtistToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The name of the original artist of the piece when this one is a cover by an another artist..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalDate">
+            <summary>
+              Recherche une chaîne localisée semblable à Original date.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OriginalDateToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The date of first release of the piece when this one has been re-released, usually the year..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OutputFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à New filename.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OutputPath">
+            <summary>
+              Recherche une chaîne localisée semblable à New path.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Overwrite">
+            <summary>
+              Recherche une chaîne localisée semblable à Overwrite.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OverwriteCovers">
+            <summary>
+              Recherche une chaîne localisée semblable à Overwrite existing covers.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OverwriteSpecificTagsQuestion">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to overwrite or preserve the existing &quot;{0}&quot; tags?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.OverwriteTags">
+            <summary>
+              Recherche une chaîne localisée semblable à Overwrite existing tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Pause">
+            <summary>
+              Recherche une chaîne localisée semblable à Pause.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PhysicalMemory">
+            <summary>
+              Recherche une chaîne localisée semblable à Physical memory:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Play">
+            <summary>
+              Recherche une chaîne localisée semblable à Play.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Player">
+            <summary>
+              Recherche une chaîne localisée semblable à Player.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PlayToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Play the selected item..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PredefinedConfigurations">
+            <summary>
+              Recherche une chaîne localisée semblable à Predefined configurations.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Preserve">
+            <summary>
+              Recherche une chaîne localisée semblable à Preserve.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PreventShutdownNotice">
+            <summary>
+              Recherche une chaîne localisée semblable à You cannot close Metatogger now beacuse an important task is in progress. Please wait a bit and try again..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Preview">
+            <summary>
+              Recherche une chaîne localisée semblable à Preview.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PreviousValue">
+            <summary>
+              Recherche une chaîne localisée semblable à Previous value: &quot;{0}&quot;.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PropertiesCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Selected file properties.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.PropertiesTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Properties.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Quit">
+            <summary>
+              Recherche une chaîne localisée semblable à Quit.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.QuitWithoutSaving">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to quit Metatogger without saving changes?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Redo">
+            <summary>
+              Recherche une chaîne localisée semblable à Redo.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RedoToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Redo the last canceled action on tags..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ReleasedIn">
+            <summary>
+              Recherche une chaîne localisée semblable à released in.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Remove">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveAllWithoutSaving">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to remove all items without saving their changes?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove checked items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveCheckedWithoutSaving">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to remove all activated items without saving their changes?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveMissingItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove missing items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveScript">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove this script.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveSelectedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove selected items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveSelectedWithoutSaving">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to remove all selected items without saving their changes?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveTagsCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove unwanted tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveTagsTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Clean up.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveTemplate">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove the selected or last pattern.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveWorkspace">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove workspace configuration.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RemoveWorkspaceMenu">
+            <summary>
+              Recherche une chaîne localisée semblable à Remove a user workspace configuration....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RenameFilesFromTags">
+            <summary>
+              Recherche une chaîne localisée semblable à Rename files from tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RenameOrganizeCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Rename or organize checked items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RenameOrganizeFilesFromTagsCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Rename and sort files according to their tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RenameOrganizeFilesFromTagsTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Tidy up.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RenameScript">
+            <summary>
+              Recherche une chaîne localisée semblable à Rename this script.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ReplaceCoverWith">
+            <summary>
+              Recherche une chaîne localisée semblable à Replace cover by....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ReplaceExternalCoverWith">
+            <summary>
+              Recherche une chaîne localisée semblable à Overwrite the file &quot;{0}&quot; by....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Reset">
+            <summary>
+              Recherche une chaîne localisée semblable à Reset.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetFields">
+            <summary>
+              Recherche une chaîne localisée semblable à Reset all fields.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetFieldToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Reset this search criteria.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetNo">
+            <summary>
+              Recherche une chaîne localisée semblable à Don&apos;t reset.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetScriptToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Reset the script to restore its default value.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetSettings">
+            <summary>
+              Recherche une chaîne localisée semblable à Reset settings.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResetSettingsConfirmation">
+            <summary>
+              Recherche une chaîne localisée semblable à Do you want to reset all settings to default in Metatogger?.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResizeEmbeddedCover">
+            <summary>
+              Recherche une chaîne localisée semblable à Reduce cover size....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResizeEmbeddedCovers">
+            <summary>
+              Recherche une chaîne localisée semblable à Resize embedded covers.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ResizeEmbeddedCoversToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Reduce the size of embedded cover arts to the specified value..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RestartNeeded">
+            <summary>
+              Recherche une chaîne localisée semblable à Changes to settings will only be noticeable after restarting Metatogger..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RestartNow">
+            <summary>
+              Recherche une chaîne localisée semblable à Restart now.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RestartNowInstruction">
+            <summary>
+              Recherche une chaîne localisée semblable à Your session will be saved then restored..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Revert">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.RevertScriptToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Revert to the saved version of the script.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SampleRate">
+            <summary>
+              Recherche une chaîne localisée semblable à Sample rate.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Save">
+            <summary>
+              Recherche une chaîne localisée semblable à Save.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveAllItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Save all items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Save checked.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveCoverAs">
+            <summary>
+              Recherche une chaîne localisée semblable à Save cover as....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveCoverInFolder">
+            <summary>
+              Recherche une chaîne localisée semblable à Save cover art in the folder&apos;s file as....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveCoverInFolderWithDefaultFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à Save cover art as &quot;{0}&quot; in the folder&apos;s file.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveCoverInTag">
+            <summary>
+              Recherche une chaîne localisée semblable à Embedd cover art in tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveExternalCoverAs">
+            <summary>
+              Recherche une chaîne localisée semblable à Save &quot;{0}&quot; as....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Save all.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveItemsToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Save all changes made to audio files..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveScriptToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Save the script.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveSelectedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Save selected.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveState">
+            <summary>
+              Recherche une chaîne localisée semblable à Save as.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveStateToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Save the working session (JMS) or checked items as playlist (M3U) (Ctrl+Shift+S).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveWorkspace">
+            <summary>
+              Recherche une chaîne localisée semblable à Save workspace configuration.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SaveWorkspaceMenu">
+            <summary>
+              Recherche une chaîne localisée semblable à Save current workspace configuration....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Saving">
+            <summary>
+              Recherche une chaîne localisée semblable à Saving....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ScriptExecutionFailed">
+            <summary>
+              Recherche une chaîne localisée semblable à The execution of script failed: {0}.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SearchDuplicates">
+            <summary>
+              Recherche une chaîne localisée semblable à Search duplicates.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SearchDuplicatesToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Search potentially duplicate files by comparing their acoustic fingerprint..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SearchingDuplicates">
+            <summary>
+              Recherche une chaîne localisée semblable à Searching duplicates....
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SelectCellPreview">
+            <summary>
+              Recherche une chaîne localisée semblable à Select a cell for a preview.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SelectTagsToOverwrite">
+            <summary>
+              Recherche une chaîne localisée semblable à Select the existing tags to overwrite.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SendFilesToRecycleBin">
+            <summary>
+              Recherche une chaîne localisée semblable à Send selected items to the recycle bin..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Settings">
+            <summary>
+              Recherche une chaîne localisée semblable à Settings.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Similarity">
+            <summary>
+              Recherche une chaîne localisée semblable à Similarity.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SingleFiles">
+            <summary>
+              Recherche une chaîne localisée semblable à Single files.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Sorting">
+            <summary>
+              Recherche une chaîne localisée semblable à Sorting.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SQLiteVersion">
+            <summary>
+              Recherche une chaîne localisée semblable à SQLite v{0} is ready.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StartingWorkspace">
+            <summary>
+              Recherche une chaîne localisée semblable à Default workspace:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StatArtist">
+            <summary>
+              Recherche une chaîne localisée semblable à artists.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StatCover">
+            <summary>
+              Recherche une chaîne localisée semblable à covers.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StatDate">
+            <summary>
+              Recherche une chaîne localisée semblable à Data updated on.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StatDisc">
+            <summary>
+              Recherche une chaîne localisée semblable à discs.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.StatTrack">
+            <summary>
+              Recherche une chaîne localisée semblable à tracks.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Stop">
+            <summary>
+              Recherche une chaîne localisée semblable à Stop.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.SyntaxErrorExpression">
+            <summary>
+              Recherche une chaîne localisée semblable à There is a syntax error in template..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagCheckedItems">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag checked items.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromAcousticFingerprint">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag from fingerprint.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromAcousticFingerprintTitle">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag from acoustic fingerprint.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromAcousticFingerprintToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Identify audio files according to their acoustic fingerprint..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromDatabaseCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Get tags from the MusicBrainz encyclopedia.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromDatabaseTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à MusicBrainz.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromFilename">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag from filename.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromFilenamePathCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Get tags from the file name or its path.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromFilenamePathTabCaption">
+            <summary>
+              Recherche une chaîne localisée semblable à Tree.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TagFromPath">
+            <summary>
+              Recherche une chaîne localisée semblable à Tag from path.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TechnicalInformations">
+            <summary>
+              Recherche une chaîne localisée semblable à Technical informations.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TechnologiesUsed">
+            <summary>
+              Recherche une chaîne localisée semblable à Web services used:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Themes">
+            <summary>
+              Recherche une chaîne localisée semblable à Themes:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Title">
+            <summary>
+              Recherche une chaîne localisée semblable à Title.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TitleSort">
+            <summary>
+              Recherche une chaîne localisée semblable à Title (sort).
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TitleSortToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Alternative &quot;Title&quot; tag used for sorting purposes..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TitleToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The title of the piece..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Tools">
+            <summary>
+              Recherche une chaîne localisée semblable à Tools.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.ToolsLayout">
+            <summary>
+              Recherche une chaîne localisée semblable à Layout of tools panes.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TooManyPicturesInTags">
+            <summary>
+              Recherche une chaîne localisée semblable à The file &quot;{0}&quot; contains more than one embedded cover art. Only the main cover art will be preserved if the file is saved in Metatogger..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TrackNumber">
+            <summary>
+              Recherche une chaîne localisée semblable à Track number.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.TrackNumberToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à The track number of the piece on the album..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Translators">
+            <summary>
+              Recherche une chaîne localisée semblable à Translators:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Unchanged">
+            <summary>
+              Recherche une chaîne localisée semblable à No.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Uncheck">
+            <summary>
+              Recherche une chaîne localisée semblable à Uncheck.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UncheckAndCheckOther">
+            <summary>
+              Recherche une chaîne localisée semblable à Uncheck and check other.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UncheckAndCheckOtherToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Uncheck selected items and check the other ones..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Unchecked">
+            <summary>
+              Recherche une chaîne localisée semblable à Unchecked.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UncheckToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Uncheck selected items..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UncommonTags">
+            <summary>
+              Recherche une chaîne localisée semblable à Uncommon tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Undo">
+            <summary>
+              Recherche une chaîne localisée semblable à Undo.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UndoToolTip">
+            <summary>
+              Recherche une chaîne localisée semblable à Undo the last action on tags..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UnsupportedImageFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à The image couldn&apos;t be decoded because it is corrupted or its format unknown..
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UpdateDatabase">
+            <summary>
+              Recherche une chaîne localisée semblable à Update database.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UserConfigurations">
+            <summary>
+              Recherche une chaîne localisée semblable à User configurations.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.UserTags">
+            <summary>
+              Recherche une chaîne localisée semblable à User tags.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Width">
+            <summary>
+              Recherche une chaîne localisée semblable à Width.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.WillOverride">
+            <summary>
+              Recherche une chaîne localisée semblable à Will override the following settings:.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.WorkspaceConfigurations">
+            <summary>
+              Recherche une chaîne localisée semblable à Workspace configurations.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.WorkspaceName">
+            <summary>
+              Recherche une chaîne localisée semblable à Configuration name.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.Workspaces">
+            <summary>
+              Recherche une chaîne localisée semblable à Workspaces.
+            </summary>
+        </member>
+        <member name="P:Metatogger.Properties.ResourceStrings.WorkspaceSettingsToSave">
+            <summary>
+              Recherche une chaîne localisée semblable à Workspace settings to save.
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.CoverTool">
+            <summary>
+            CoverTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.CoverTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.DetailsTool">
+            <summary>
+            DetailsTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.DetailsTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.ManualTaggingTool">
+            <summary>
+            ManualTaggingTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.ManualTaggingTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.RemoveTagsTool">
+            <summary>
+            RemoveTagsTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.RemoveTagsTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.RenameOrganizeTool">
+            <summary>
+            RenameOrganizeTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.RenameOrganizeTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.TagDatabaseTool">
+            <summary>
+            TagDatabaseTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.TagDatabaseTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.TagFilenamePathTool">
+            <summary>
+            TagFilenamePathTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.TagFilenamePathTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Tools.TagScriptTool">
+            <summary>
+            TagScriptTool
+            </summary>
+        </member>
+        <member name="M:Metatogger.Tools.TagScriptTool.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.CreditsWindow">
+            <summary>
+            CreditsWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.CreditsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.DialogWindow">
+            <summary>
+            DialogWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.DialogWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.InputComboBoxWindow">
+            <summary>
+            InputComboBoxWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.InputComboBoxWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.InputReduceCoverSizeWindow">
+            <summary>
+            InputReduceCoverSizeWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.InputReduceCoverSizeWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.InputSaveWorkspaceConfigurationWindow">
+            <summary>
+            InputSaveWorkspaceConfigurationWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.InputSaveWorkspaceConfigurationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.InputTextBoxWindow">
+            <summary>
+            InputTextBoxWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.InputTextBoxWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.MainWindow">
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Metatogger.Windows.TagsToOverwriteWindow">
+            <summary>
+            TagsToOverwriteWindow
+            </summary>
+        </member>
+        <member name="M:Metatogger.Windows.TagsToOverwriteWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.GetTemplateRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the GetTemplateRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.GetTemplateRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+    </members>
+</doc>

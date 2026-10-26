@@ -2,9 +2,17 @@
 
 Scripts for Metatogger are written is C# and executed by Roslyn.
 
-The coding experience is better under Visual Studio Code than Metatogger.
+The coding experience is much better under Visual Studio Code than Metatogger.
 
 The API documentation for the main classes available for scripting in Metatogger can be read online at [luminescence-software.github.io/scripts-doc/](https://luminescence-software.github.io/scripts-doc/).
+
+## Editing in Visual Studio Code
+
+Install the .NET 10 SDK for Windows and the Microsoft C# extension (C# Dev Kit is optional), then open this directory in VS Code. Use the default Roslyn language server (`dotnet.server.useOmnisharp` must be false). VS Code loads `Scripts.IntelliSense.csproj` and restores its SDK references.
+
+The project includes a Metatogger reference assembly; a local Metatogger installation and an installation-specific binary path are not required for IntelliSense. `ScriptContext.cs` supplies the type of the host-provided `files` variable only for editing, so no temporary declaration needs to be added to the scripts.
+
+Run the scripts in Metatogger. This project provides editor context and does not reproduce CSX execution: multiple independent scripts produce C# top-level-statement diagnostics (error CS8802), and `#load`/`#r` (error CS8097) are not treated as scripting directives in an ordinary C# project. The .NET and Metatogger type information remains useful despite those diagnostics, which can be safely ignored.
 
 Here is a basic script template:
 
