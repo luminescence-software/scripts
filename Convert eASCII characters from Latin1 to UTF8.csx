@@ -1,4 +1,4 @@
-// This script assumes that tags containing Extended ASCII characters
+﻿// This script assumes that tags containing Extended ASCII characters
 // are poorly stored as Latin1 and converts their encoding to UTF-8.
 
 using System;
@@ -9,7 +9,7 @@ using Metatogger.Data;
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
  // leave the array empty to process all tags => { }
-string[] tagsToProcess = {  };
+string[] tagsToProcess = [];
 
 IEnumerable<char> NonASCII(IEnumerable<char> chars) => chars.Where(c => c > 127);
 IEnumerable<char> NonEASCII(IEnumerable<char> chars) => chars.Where(c => c > 255);

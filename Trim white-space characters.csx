@@ -5,7 +5,7 @@ using Metatogger.Data;
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
  // leave the array empty to process all tags => { }
-string[] tagsToProcess = {  };
+string[] tagsToProcess = [];
 
 foreach (var file in files)
 	foreach (var tag in file.GetAllTags().Where(kvp => tagsToProcess.Length == 0 || tagsToProcess.Contains(kvp.Key)))

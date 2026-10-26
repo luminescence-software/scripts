@@ -1,4 +1,4 @@
-// This script capitalize your tag value with the capitalization rules from the common English title case style ("a day in the life" -> "A Day in the Life")
+﻿// This script capitalize your tag value with the capitalization rules from the common English title case style ("a day in the life" -> "A Day in the Life")
 
 using System;
 using System.Collections.Generic;
@@ -8,19 +8,19 @@ using Metatogger.Data;
 
  // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
  // leave the array empty to process all tags => { }
-string[] tagsToProcess = {  };
+string[] tagsToProcess = [];
 
 public static class EnglishTitleCapitalizer
 {
-	public readonly static string[] Prepositions = new[] { "about", "above", "across", "after", "against", "along", "among", "around", "at", "before", "behind", "below", "beneath", "beside", "between", "beyond", "but", "by", "despite", "down", "during", "except", "for", "from", "in", "inside", "into", "like", "near", "of", "off", "on", "onto", "out", "outside", "over", "past", "per", "since", "through", "throughout", "till", "to", "toward", "under", "underneath", "until", "up", "upon", "via", "with", "within", "without", "versus" };
-	public readonly static string[] Articles = new[] { "a", "an", "the" };
-	public readonly static string[] Conjunctions = new[] { "and", "but", "or", "nor", "for", "yet", "so" };
-	public readonly static char[] EndingPunctuations = new[] { '.', '?', '!', ':' };
+	public readonly static string[] Prepositions = ["about", "above", "across", "after", "against", "along", "among", "around", "at", "before", "behind", "below", "beneath", "beside", "between", "beyond", "but", "by", "despite", "down", "during", "except", "for", "from", "in", "inside", "into", "like", "near", "of", "off", "on", "onto", "out", "outside", "over", "past", "per", "since", "through", "throughout", "till", "to", "toward", "under", "underneath", "until", "up", "upon", "via", "with", "within", "without", "versus"];
+	public readonly static string[] Articles = ["a", "an", "the"];
+	public readonly static string[] Conjunctions = ["and", "but", "or", "nor", "for", "yet", "so"];
+	public readonly static char[] EndingPunctuations = ['.', '?', '!', ':'];
 
-	public readonly static HashSet<string> MustBeUpperCase = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase) { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "DJ", "MC", "TV", "MTV", "EP", "LP", "YMCA", "NYC", "NY", "USSR", "USA", "R&B", "BBC", "FM", "AC", "DC", "AC/DC", "UK", "BPM", "OK", "Q&A", "FAQ" };
-	public readonly static HashSet<string> MustBeLowerCase = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase) { "ft", "ft.", "feat", "feat.", "n'", "'n'", "no." };
-	public readonly static HashSet<string> TheGroups = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase) { "Beatles", "Police", "Corrs", "Doors", "Beach Boys" };
-	public readonly static Dictionary<string, string> SpecialMixedCase = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+	public readonly static HashSet<string> MustBeUpperCase = new(StringComparer.InvariantCultureIgnoreCase) { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "DJ", "MC", "TV", "MTV", "EP", "LP", "YMCA", "NYC", "NY", "USSR", "USA", "R&B", "BBC", "FM", "AC", "DC", "AC/DC", "UK", "BPM", "OK", "Q&A", "FAQ" };
+	public readonly static HashSet<string> MustBeLowerCase = new(StringComparer.InvariantCultureIgnoreCase) { "ft", "ft.", "feat", "feat.", "n'", "'n'", "no." };
+	public readonly static HashSet<string> TheGroups = new(StringComparer.InvariantCultureIgnoreCase) { "Beatles", "Police", "Corrs", "Doors", "Beach Boys" };
+	public readonly static Dictionary<string, string> SpecialMixedCase = new(StringComparer.InvariantCultureIgnoreCase)
 	{
 		["rock'n'roll"] = "Rock 'n' Roll",
 		["o'clock"] = "O'Clock",
@@ -55,7 +55,7 @@ public static class EnglishTitleCapitalizer
 		if (firstCharIndex == -1)
 			return s;
 
-		return s.Substring(firstCharIndex, GetLastCharIndex(s) + 1 - firstCharIndex);
+		return s[firstCharIndex..(GetLastCharIndex(s) + 1)];
 	}
 
 	private static string UpperCase(string s)
@@ -95,7 +95,7 @@ public static class EnglishTitleCapitalizer
 		if (resetUpperCase)
 			title = title.ToLower();
 
-		string[] words = title.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+		string[] words = title.Split([' '], StringSplitOptions.RemoveEmptyEntries);
 
 		for (int i = 0; i < words.Length; i++)
 		{
@@ -116,11 +116,11 @@ public static class EnglishTitleCapitalizer
 					|| i == words.Length - 1 // ...unless it's the last word
 					|| Char.GetUnicodeCategory(word[0]) == UnicodeCategory.OpenPunctuation // ...unless the word begins with '('
 					|| word[0] == '"' // ...unless the word begins with '"'
-					|| Char.GetUnicodeCategory(word[word.Length - 1]) == UnicodeCategory.ClosePunctuation // ...unless the word ends with ')'
-					|| word[word.Length - 1] == '"' // ...unless the word ends with '"'
-					|| Char.GetUnicodeCategory(words[i - 1][words[i - 1].Length - 1]) == UnicodeCategory.ClosePunctuation // ...unless the previous word ends with ')'
-					|| Char.GetUnicodeCategory(words[i - 1][words[i - 1].Length - 1]) == UnicodeCategory.DashPunctuation // ...unless the previous word ends with '-'
-					|| EndingPunctuations.Contains(words[i - 1][words[i - 1].Length - 1]) // ...unless the previous word ends with '.'
+					|| Char.GetUnicodeCategory(word[^1]) == UnicodeCategory.ClosePunctuation // ...unless the word ends with ')'
+					|| word[^1] == '"' // ...unless the word ends with '"'
+					|| Char.GetUnicodeCategory(words[i - 1][^1]) == UnicodeCategory.ClosePunctuation // ...unless the previous word ends with ')'
+					|| Char.GetUnicodeCategory(words[i - 1][^1]) == UnicodeCategory.DashPunctuation // ...unless the previous word ends with '-'
+					|| EndingPunctuations.Contains(words[i - 1][^1]) // ...unless the previous word ends with '.'
 					|| (String.Equals(wordCore, "The", StringComparison.InvariantCultureIgnoreCase) && TheGroups.Contains(GetWordCore(words[i + 1])))) // ...unless "the" is a part of band's name
 					words[i] = UpperCase(word);
 				else

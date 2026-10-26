@@ -1,14 +1,11 @@
-// Describe here what the script does
+﻿// Describe here what the script does
 
 using System.Linq;
 using Metatogger.Data;
 
-// Uncomment the following line to get better coding experience with VS Code, but DO NOT forget to comment it before running the script into host
-//System.Collections.Generic.IEnumerable<Metatogger.Data.AudioFile> files = new System.Collections.Generic.List<Metatogger.Data.AudioFile>(); // list of checked audio files loaded in the workspace
-
- // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
- // leave the array empty to process all tags => { }
-string[] tagsToProcess = {  };
+ // enter tags name to process => eg. ["TAGNAME1", "TAGNAME2", TagName.TrackNumber]
+ // leave the array empty to process all tags => []
+string[] tagsToProcess = [];
 
 string NewValue(string oldValue)
 {
@@ -21,7 +18,7 @@ foreach (var file in files)
 			file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
 
 
-// The "files" variable contains the collection of audio files checked in Metatogger
+// The "files" variable contains the collection of audio files checked in Metatogger : IList<Metatogger.Data.AudioFile> files;
 // Dictionary<string, List<string>> AudioFile.GetAllTags() => returns all tags of an audio file
 // List<string> AudioFile.GetValues(string tag) => returns all values of a tag
 // string AudioFile.GetFirstValue(string tag) => returns first tag value for a tag

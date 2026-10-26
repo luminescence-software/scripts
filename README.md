@@ -1,8 +1,8 @@
-# Scripts repository for Metatogger
+﻿# Scripts repository for Metatogger
 
 Scripts for Metatogger are written is C# and executed by Roslyn.
 
-The coding experience is much better under Visual Studio Code (code completion, refactoring,...).
+The coding experience is better under Visual Studio Code than Metatogger.
 
 The API documentation for the main classes available for scripting in Metatogger can be read online at [luminescence-software.github.io/scripts-doc/](https://luminescence-software.github.io/scripts-doc/).
 
@@ -14,9 +14,9 @@ Here is a basic script template:
 using System.Linq;
 using Metatogger.Data;
 
- // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
- // leave the array empty to process all tags => { }
-string[] tagsToProcess = {  };
+ // enter tags name to process => eg. ["TAGNAME1", "TAGNAME2", TagName.TrackNumber]
+ // leave the array empty to process all tags => []
+string[] tagsToProcess = [];
 
 string NewValue(string oldValue)
 {
@@ -29,7 +29,7 @@ foreach (var file in files)
         file.SetTagValue(tag.Key, tagValue, NewValue(tagValue));
 
 
-// The "files" variable contains the collection of audio files checked in Metatogger
+// The "files" variable contains the collection of audio files checked in Metatogger : IList<Metatogger.Data.AudioFile> files;
 // Dictionary<string, List<string>> AudioFile.GetAllTags() => returns all tags of an audio file
 // List<string> AudioFile.GetValues(string tag) => returns all values of a tag
 // string AudioFile.GetFirstValue(string tag) => returns first tag value for a tag

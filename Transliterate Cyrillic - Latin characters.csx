@@ -8,7 +8,7 @@ using Metatogger.Data;
 // enter tags name to process => eg. { "TAGNAME1", "TAGNAME2", TagName.TrackNumber }
 // leave the array empty to process all tags => { }
 
-string[] tagsToProcess = {  };
+string[] tagsToProcess = [];
 
 // Available transliteration methods:
 // Transliteration.CyrillicToLatin(string cyrillicSource, Language language = Language.Unknown)
